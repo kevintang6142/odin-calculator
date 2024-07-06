@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="display">0</div>
-    <button id="0">0</button>
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="decimal">.</button>
-    <button id="add">+</button>
-    <button id="subtract">-</button>
-    <button id="multiply">×</button>
-    <button id="divide">÷</button>
-    <button id="equals">=</button>
-    <button id="clear">AC</button>
-    <button id="delete">←</button>
-    <button id="change-sign">+/-</button>
+    <div id="calculator">
+        <div id="display-container">
+            <div id="display">0</div>
+        </div>
+        <div id="button-container">
+            <div class="row">
+                <button id="clear" class="orange">AC</button>
+                <button id="delete" class="orange">←</button>
+                <button id="change-sign">+/-</button>
+                <button id="divide" class="operation">÷</button>
+            </div>
+            <div class="row">
+                <button id="7">7</button>
+                <button id="8">8</button>
+                <button id="9">9</button>
+                <button id="multiply" class="operation">×</button>
+            </div>
+            <div class="row">
+                <button id="4">4</button>
+                <button id="5">5</button>
+                <button id="6">6</button>
+                <button id="subtract" class="operation">-</button>
+            </div>
+            <div class = "big row">
+                <div class="column">
+                    <button id="1">1</button>
+                    <button id="0">0</button>
+                </div>
+                <div class="column">
+                    <button id="2">2</button>
+                    <button id="decimal">.</button>
+                </div>
+                <div class="column">
+                    <button id="3">3</button>
+                    <button id="equals">=</button>
+                </div>
+                <div class="column">
+                    <button id="add" class="operation">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </body>
 </html>
