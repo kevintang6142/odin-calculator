@@ -20,11 +20,12 @@ resetCalculator();
 clear.addEventListener("click", resetCalculator);
 squareRoot.addEventListener("click", e => {
     let result = (+display.innerText) ** 0.5;
-    if (result > -0.0000001 && result < 0.00000001) {
+    if (result < 0.00000001) {
         result = "0";
     }
     else {
-        result = result.includes("e") ? toDecimal(result) : result.slice(0, 10);
+        result = result.toString();
+        result = result.includes("e") ? toDecimal(result) : +result.slice(0, 10);
     }
     display.innerText = result;
     switch (calculatorState) {
