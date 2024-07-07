@@ -26,6 +26,6 @@ function updateDisplayNumber(userInput) {
     if (displayNumber.length === 10) return;
     if (displayNumber.includes(".") && userInput === ".") return;   
     if (displayNumber === "0" && userInput === "0") return;
-    displayNumber !== "0" ? displayNumber = displayNumber + userInput : displayNumber = userInput;
+    displayNumber !== "0" || userInput === "." ? displayNumber = displayNumber + userInput : displayNumber = userInput;
     display.innerText = displayNumber;
 }
