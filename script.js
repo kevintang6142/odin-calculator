@@ -20,11 +20,11 @@ resetCalculator();
 clear.addEventListener("click", resetCalculator);
 squareRoot.addEventListener("click", e => {
     let result = (+display.innerText) ** 0.5;
-    if (Math.abs(result) < 0.00000001) {
+    if (result > -0.0000001 && result < 0.00000001) {
         result = "0";
     }
     else {
-        result = result.toString().slice(0, 10);
+        result = result.includes("e") ? toDecimal(result) : result.slice(0, 10);
     }
     display.innerText = result;
     switch (calculatorState) {
@@ -98,16 +98,17 @@ function calculate() {
             result = +firstNumber;
             break;
     }
-    if (Math.abs(result) < 0.00000001) {
+    if (result > -0.0000001 && result < 0.00000001) {
         firstNumber = "0";
     }
-    else if (Math.abs(result) > 9999999999) {
+    else if (result < -999999999 || result > 9999999999) {
         firstNumber = "NaN";
     }
     else {
-        firstNumber = result.toString().slice(0, 10);
+        result = result.toString();
+        firstNumber = result.includes("e") ? toDecimal(result) : result.slice(0, 10);
     }
-    display.innerText = +firstNumber;
+    display.innerText = firstNumber;
 }
 
 function resetCalculator() {
@@ -116,5 +117,29 @@ function resetCalculator() {
     currentOperation = null;
     firstNumber = null;
     secondNumber = null;
-    calculatorState = 1;
+    calculatorState = 3;
+}
+
+function toDecimal(number) {
+    if (number.startsWith("-")) {
+        return "-0.000000" + number[1];
+    }
+    else {
+        if (number.length === 4) {
+            if (number.at(-1) === "7") {
+                return "0.000000" + number[0];
+            }
+            else {
+                return "0.0000000" + number[0];
+            }
+        }
+        else {
+            if (number.at(-1) === "7") {
+                return "0.000000" + number[0] + number[2];
+            }
+            else {
+                return "0.0000000" + number[0];
+            }
+        }
+    }
 }
