@@ -20,7 +20,7 @@ resetCalculator();
 clear.addEventListener("click", resetCalculator);
 squareRoot.addEventListener("click", e => {
     let result = (+display.innerText) ** 0.5;
-    if (result < 0.00000001) {
+    if (Math.abs(result) < 0.00000001) {
         result = "0";
     }
     else {
@@ -98,10 +98,10 @@ function calculate() {
             result = +firstNumber;
             break;
     }
-    if (result < 0.00000001) {
+    if (Math.abs(result) < 0.00000001) {
         firstNumber = "0";
     }
-    else if (result > 9999999999) {
+    else if (Math.abs(result) > 9999999999) {
         firstNumber = "NaN";
     }
     else {
