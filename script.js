@@ -78,8 +78,16 @@ function calculate() {
         default:
             result = +firstNumber;
     }
-    firstNumber = result.toString();
-    display.innerText = firstNumber;
+    if (result < 0.00000001) {
+        firstNumber = "0";
+    }
+    else if (result > 9999999999) {
+        firstNumber = "NaN";
+    }
+    else {
+        firstNumber = result.toString().slice(0, 10);
+    }
+    display.innerText = +firstNumber;
 }
 
 function resetCalculator() {
