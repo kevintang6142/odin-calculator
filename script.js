@@ -18,6 +18,25 @@ const equals = document.querySelector("#equals");
 resetCalculator();
 
 clear.addEventListener("click", resetCalculator);
+squareRoot.addEventListener("click", e => {
+    let result = (+display.innerText) ** 0.5;
+    if (result < 0.00000001) {
+        result = "0";
+    }
+    else {
+        result = result.toString().slice(0, 10);
+    }
+    display.innerText = result;
+    switch (calculatorState) {
+        case 1:
+        case 3:
+            firstNumber = result;
+            break;
+        case 2:
+            secondNumber = result;
+            break;
+    }
+});
 operations.forEach(operation => operation.addEventListener("click", e => {
     if (calculatorState === 2 && secondNumber !== null) calculate();
     calculatorState = 2;
@@ -77,6 +96,7 @@ function calculate() {
             break;
         default:
             result = +firstNumber;
+            break;
     }
     if (result < 0.00000001) {
         firstNumber = "0";
