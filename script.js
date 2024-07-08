@@ -147,6 +147,7 @@ function calculate() {
 }
 
 function calculatePercent() {
+    if (calculatorState === 3) return;
     let result;
     switch (currentOperation) {
         case "add":
