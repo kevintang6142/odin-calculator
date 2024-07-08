@@ -150,11 +150,19 @@ function calculatePercent() {
     let result;
     switch (currentOperation) {
         case "add":
-            result = secondNumber !== null ? +firstNumber * (1 + +secondNumber / 100) : +firstNumber;
-            break;
+            if (secondNumber !== null) {
+                result = +firstNumber * (1 + +secondNumber / 100)
+            }
+            else {
+                return;
+            }
         case "subtract":
-            result = secondNumber !== null ? +firstNumber * (1 - +secondNumber / 100) : +firstNumber;
-            break;
+            if (secondNumber !== null) {
+                result = +firstNumber * (1 - +secondNumber / 100)
+            }
+            else {
+                return;
+            }
         case "multiply":
             if (secondNumber !== null) {
                 result = +firstNumber * +secondNumber / 100;
