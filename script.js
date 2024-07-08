@@ -119,10 +119,10 @@ function calculate() {
             break;
         case "multiply":
             if (secondNumber !== null) {
-                result = +firstNumber * +secondNumber
+                result = +firstNumber * +secondNumber;
             }
             else {
-                result = firstNumber ** 2; 
+                result = (+firstNumber) ** 2; 
                 secondNumber = firstNumber;
             }
             break;
@@ -156,7 +156,13 @@ function calculatePercent() {
             result = secondNumber !== null ? +firstNumber * (1 - +secondNumber / 100) : +firstNumber;
             break;
         case "multiply":
-            result = secondNumber !== null ? +firstNumber * +secondNumber / 100 : +firstNumber / 100;
+            if (secondNumber !== null) {
+                result = +firstNumber * +secondNumber / 100;
+            }
+            else {
+                result = (+firstNumber) ** 2 / 100; 
+                secondNumber = firstNumber;
+            }
             break;
         case "divide":
             result = secondNumber !== null ? +firstNumber / +secondNumber * 100: 1 / firstNumber * 100;
