@@ -54,6 +54,7 @@ equals.addEventListener("click", e => {
 });
 percent.addEventListener("click", calculatePercent);
 document.addEventListener('keydown', function(e) {
+    e.preventDefault();
     const key = e.key;
     if (parseInt(key)) {
         digits[parseInt(key)].click();

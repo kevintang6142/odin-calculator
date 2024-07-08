@@ -1,15 +1,3 @@
-.black { 
-	background-color: #222831; 
-}
-	
-.gray { 
-	background-color: #393e46; 
-}
-
-.white { 
-	background-color: #f2f2f2; 
-}
-
 body {
     height: 100vh;
     display: flex;
