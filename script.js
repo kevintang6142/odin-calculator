@@ -25,7 +25,7 @@ squareRoot.addEventListener("click", e => {
     }
     else {
         result = result.toString();
-        result = result.includes("e") ? toDecimal(result) : +result.slice(0, 10);
+        result = result.includes("e") ? toDecimal(result) : (+result.slice(0, 10)).toString();
     }
     display.innerText = result;
     switch (calculatorState) {
@@ -52,6 +52,7 @@ equals.addEventListener("click", e => {
     calculate();
     calculatorState = 3;
 });
+percent.addEventListener("click", calculatePercent);
 
 function updateNumber(userInput) {
     if (calculatorState === 3) {
@@ -107,9 +108,42 @@ function calculate() {
     }
     else {
         result = result.toString();
-        firstNumber = result.includes("e") ? toDecimal(result) : result.slice(0, 10);
+        firstNumber = result.includes("e") ? toDecimal(result) : (+result.slice(0, 10)).toString();
     }
     display.innerText = firstNumber;
+}
+
+function calculatePercent() {
+    let result;
+    switch (currentOperation) {
+        case "add":
+            result = secondNumber !== null ? +firstNumber * (1 + +secondNumber / 100) : +firstNumber;
+            break;
+        case "subtract":
+            result = secondNumber !== null ? +firstNumber * (1 - +secondNumber / 100) : +firstNumber;
+            break;
+        case "multiply":
+            result = secondNumber !== null ? +firstNumber * +secondNumber / 100 : +firstNumber / 100;
+            break;
+        case "divide":
+            result = secondNumber !== null ? +firstNumber / +secondNumber * 100: 1 / firstNumber * 100;
+            break;
+        default:
+            result = +firstNumber / 100;
+            break;
+    }
+    if (result > -0.0000001 && result < 0.00000001) {
+        firstNumber = "0";
+    }
+    else if (result < -999999999 || result > 9999999999) {
+        firstNumber = "NaN";
+    }
+    else {
+        result = result.toString();
+        firstNumber = result.includes("e") ? toDecimal(result) : (+result.slice(0, 10)).toString();
+    }
+    display.innerText = firstNumber;
+    calculatorState = 3;
 }
 
 function resetCalculator() {
