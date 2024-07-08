@@ -152,18 +152,20 @@ function calculatePercent() {
     switch (currentOperation) {
         case "add":
             if (secondNumber !== null) {
-                result = +firstNumber * (1 + +secondNumber / 100)
+                result = +firstNumber * (1 + +secondNumber / 100);
             }
             else {
                 return;
             }
+            break;
         case "subtract":
             if (secondNumber !== null) {
-                result = +firstNumber * (1 - +secondNumber / 100)
+                result = +firstNumber * (1 - +secondNumber / 100);
             }
             else {
                 return;
             }
+            break;
         case "multiply":
             if (secondNumber !== null) {
                 result = +firstNumber * +secondNumber / 100;
