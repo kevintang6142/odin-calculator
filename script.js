@@ -53,6 +53,36 @@ equals.addEventListener("click", e => {
     calculatorState = 3;
 });
 percent.addEventListener("click", calculatePercent);
+document.addEventListener('keydown', function(e) {
+    const key = e.key;
+    if (parseInt(key)) {
+        digits[parseInt(key)].click();
+    }
+    else if (key === ".") {
+        decimal.click();
+    }
+    else if (key === "+") {
+        operations[0].click();
+    }
+    else if (key === "-") {
+        operations[1].click();
+    }
+    else if (key === "*" || key === "x") {
+        operations[2].click();
+    }
+    else if (key === "/") {
+        operations[3].click();
+    }
+    else if (key === ".") {
+        decimal.click();
+    }
+    else if (key === "=" || key === "Enter") {
+        equals.click();
+    }
+    else if (key === "Backspace") {
+        clear.click();
+    }
+});
 
 function updateNumber(userInput) {
     if (calculatorState === 3) {
