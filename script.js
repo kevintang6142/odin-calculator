@@ -82,6 +82,9 @@ document.addEventListener('keydown', function(e) {
     else if (key === "Backspace") {
         clear.click();
     }
+    else if (key === "%") {
+        percent.click();
+    }
 });
 
 function updateNumber(userInput) {
