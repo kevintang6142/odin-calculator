@@ -162,7 +162,7 @@ function calculatePercent() {
             result = secondNumber !== null ? +firstNumber / +secondNumber * 100: 1 / firstNumber * 100;
             break;
         default:
-            result = +firstNumber / 100;
+            result = 0;
             break;
     }
     if (result > -0.0000001 && result < 0.00000001) {
